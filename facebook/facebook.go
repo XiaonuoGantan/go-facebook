@@ -13,8 +13,8 @@ const (
 )
 
 type GraphAPI struct {
-	accessToken string
-	version     string
+	AccessToken string
+	Version     string
 }
 
 type GraphAPIError struct {
@@ -26,7 +26,7 @@ func (err GraphAPIError) Error() string {
 }
 
 func (api *GraphAPI) Request(path string, method string, args url.Values, postArgs url.Values) (map[string]interface{}, error) {
-	endpoint := GraphHost + api.version + path + "?access_token=" + api.accessToken
+	endpoint := GraphHost + api.Version + path + "?access_token=" + api.AccessToken
 	client := &http.Client{}
 	if args != nil {
 		q := args.Encode()
